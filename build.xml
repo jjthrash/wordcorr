@@ -17,6 +17,7 @@
   <property name="build.jar" value="${build.lib}/${app.name}.jar"/>
   <property name="build.dist" value="${app.home}/${app.name}.zip" />
   <property name="build.net" value="D:\WebServiceDev\webapps\WordCorrNet\WEB-INF\lib" />
+  <property name="build.wordcorr.app" value="WordCorr.app" />
   <property name="javadoc.home" value="${doc.home}/${app.name}"/>
   <property name="javadoc.zip" value="${javadoc.home}.zip"/>
   <property name="javadoc.windowtitle" value="${app.title} API Specification"/>
@@ -59,6 +60,15 @@
   <target name="net" depends="compile">
     <copy todir="${build.net}">
       <fileset dir="${build.lib}" includes="${app.name}.jar"/>
+    </copy>
+  </target>
+
+  <target name="WordCorr.app" depends="compile">
+    <copy todir="${build.wordcorr.app}/Contents/Resources/Java/">
+      <fileset dir=".">
+        <include name="etc/**"/>
+      </fileset>
+      <fileset dir="build/lib" includes="*"/>
     </copy>
   </target>
 

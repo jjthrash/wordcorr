@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist SYSTEM "file://localhost/System/Library/DTDs/PropertyList.dtd">
+<plist version="0.9">
+<dict>
+	<key>CFBundleName</key>
+	<string>WordCorr</string>
+	<key>CFBundleVersion</key>
+	<string>10.2</string>
+	<key>CFBundleAllowMixedLocalizations</key>
+	<string>true</string>
+	<key>CFBundleExecutable</key>
+	<string>JavaApplicationStub</string>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>English</string>
+	<key>CFBundlePackageType</key>
+	<string>APPL</string>
+	<key>CFBundleSignature</key>
+	<string>????</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleIconFile</key>
+	<string>GenericJavaApp.icns</string>
+	<key>Java</key>
+	<dict>
+		<key>WorkingDirectory</key>
+		<string>$APP_PACKAGE/Contents/Resources/Java</string>
+		<key>MainClass</key>
+		<string>org.wordcorr.gui.Main</string>
+		<key>JVMVersion</key>
+		<string>1.4+</string>
+		<key>ClassPath</key>
+			<array>
+			<string>$JAVAROOT/wordcorr.jar</string>
+			<string>$JAVAROOT/mail.jar</string>
+			<string>$JAVAROOT/themepack.zip</string>
+			<string>$JAVAROOT/saaj-ri.jar</string>
+			<string>$JAVAROOT/activation.jar</string>
+			<string>$JAVAROOT/jaxm-api.jar</string>
+			<string>$JAVAROOT/commons-dbcp.jar</string>
+			<string>$JAVAROOT/hsqldb.jar</string>
+			<string>$JAVAROOT/commons-pool.jar</string>
+			<string>$JAVAROOT/jlfgr-1_0.jar</string>
+			<string>$JAVAROOT/skinlf.jar</string>
+			<string>$JAVAROOT/commons-collections.jar</string>
+			<string>$JAVAROOT/commons-logging.jar</string>
+			<string>$JAVAROOT/jdom.jar</string>
+			<string>$JAVAROOT/dom4j.jar</string>
+			<string>$JAVAROOT/saaj-api.jar</string>
+			<string>$JAVAROOT/servlet.jar</string>
+			</array>
+	</dict>
+</dict>
+</plist>
