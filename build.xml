@@ -77,5 +77,8 @@
   <target name="clean">
     <delete dir="${build.home}"/>
     <delete file="${build.dist}"/>
+    <delete>
+      <fileset dir="${build.wordcorr.app}/Contents/Resources/Java" includes="**"/>
+    </delete>
   </target>
 </project>
