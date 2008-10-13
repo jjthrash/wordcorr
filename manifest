@@ -1,0 +1,10 @@
+Manifest-version: 1.0
+Java-Version: 1.3
+Main-Class: org.wordcorr.gui.Main
+Class-Path: skinlf.jar themepack.zip hsqldb.jar commons-pool.jar commons-dbcp.jar commons-collections.jar jlfgr-1_0.jar jdom.jar xerces.jar saaj-api.jar saaj-ri.jar commons-logging.jar mail.jar activation.jar dom4j.jar servlet.jar
+
+Name: org/wordcorr/gui/
+Specification-Title: WordCorr
+Specification-Version: 1.0
+Implementation-Title: WordCorr
+Implementation-Version: 1.0.0

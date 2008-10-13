@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+
+<project name="WordCorr" default="compile" basedir=".">
+
+  <!-- Default doc.home and app.home properties -->
+  <property name="doc.home" value="docs" />
+  <property name="app.home" value="build" />
+  <property name="app.name" value="wordcorr"/>
+  <property name="app.title" value="WordCorr"/>
+<!--
+  <property name="build.compiler" value="jikes" />
+-->
+  <property name="build.compiler.emacs" value="on"/>
+  <property name="build.home" value="build"/>
+  <property name="build.classes" value="${build.home}/classes"/>
+  <property name="build.lib" value="${build.home}/lib"/>
+  <property name="build.jar" value="${build.lib}/${app.name}.jar"/>
+  <property name="build.dist" value="${app.home}/${app.name}.zip" />
+  <property name="build.net" value="D:\WebServiceDev\webapps\WordCorrNet\WEB-INF\lib" />
+  <property name="javadoc.home" value="${doc.home}/${app.name}"/>
+  <property name="javadoc.zip" value="${javadoc.home}.zip"/>
+  <property name="javadoc.windowtitle" value="${app.title} API Specification"/>
+  <property name="javadoc.header" value="&lt;b&gt;${app.title}&lt;/b&gt;"/>
+  <property name="javadoc.doctitle" value="${javadoc.windowtitle}"/>
+
+  <path id="ext">
+    <fileset dir="${java.home}" includes="**/lib/ext/*.jar"/>
+    <fileset dir="lib" includes="*.jar"/>
+    <path path="${build.classes}" />
+  </path>
+
+  <target name="compile">
+    <mkdir dir="${build.classes}"/>
+    <copy todir="${build.classes}">
+      <fileset dir="etc" includes="**" />
+    </copy>
+    <javac deprecation="off" destdir="${build.classes}" optimize="off" classpathref="ext" debug="off" srcdir="src"/>
+    <copy todir="${build.lib}">
+      <fileset dir="lib" includes="*.jar"/>
+      <fileset dir="lib" includes="*.zip"/>
+    </copy>
+    <jar jarfile="${build.jar}" basedir="${build.classes}" manifest="manifest"/>
+  </target>
+
+  <target name="javadoc">
+    <delete dir="${javadoc.home}"/>
+    <mkdir dir="${javadoc.home}"/>
+    <javadoc bottom="${javadoc.bottom}" header="${javadoc.header}" destdir="${javadoc.home}" private="true" classpathref="ext" packagenames="org.wordcorr.gui, org.wordcorr.gui.tree, org.wordcorr.db" windowtitle="${javadoc.windowtitle}" doctitle="${javadoc.doctitle}" use="true" sourcepath="src" />
+    <zip zipfile="${javadoc.zip}" basedir="${javadoc.home}" />
+  </target>
+
+  <target name="dist" depends="compile">
+    <copy todir="${build.lib}">
+      <fileset dir="." includes="Readme.txt"/>
+    </copy>
+    <zip zipfile="${build.dist}" basedir="${build.lib}" />
+  </target>
+  
+  <target name="net" depends="compile">
+    <copy todir="${build.net}">
+      <fileset dir="${build.lib}" includes="${app.name}.jar"/>
+    </copy>
+  </target>
+
+  <target name="all" depends="clean,dist,javadoc"/>
+
+  <target name="clean">
+    <delete dir="${build.home}"/>
+    <delete file="${build.dist}"/>
+  </target>
+</project>

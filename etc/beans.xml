@@ -1,0 +1,987 @@
+<?xml version="1.0" ?>
+
+<!DOCTYPE beans [
+<!ELEMENT beans (bean*)>
+<!ELEMENT bean (property*)>
+<!ATTLIST bean id ID #REQUIRED>
+<!ELEMENT property (label-key, mnemonic-key?, content?, default-value?, max-length?, min-value?, max-value?, rows?, columns?, editor-class?, font-key?, option*)>
+<!ATTLIST property
+          id ID #REQUIRED
+          data-type (text | integer | float) #IMPLIED
+          editor-type (label | textbox | password | textarea | select | checkbox | custom) #REQUIRED
+          required (true | false) #IMPLIED
+          nospace (true | false) #IMPLIED>
+<!ELEMENT label-key (#PCDATA)>
+<!ELEMENT mnemonic-key (#PCDATA)>
+<!ELEMENT required-message-key (#PCDATA)>
+<!ELEMENT content (#PCDATA)>
+<!ELEMENT default-value (#PCDATA)>
+<!ELEMENT max-length (#PCDATA)>
+<!ELEMENT rows (#PCDATA)>
+<!ELEMENT columns (#PCDATA)>
+<!ELEMENT option (name, value)>
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT value (#PCDATA)>
+]>
+
+<beans>
+  <bean id="User">
+    <property id="name" editor-type="textbox" required="true" nospace="true">
+      <label-key>lblUserName</label-key>
+      <mnemonic-key>accUserName</mnemonic-key>
+      <max-length>8</max-length>
+    </property>
+    <property id="familyName" editor-type="textbox" required="true">
+      <label-key>lblFamilyName</label-key>
+      <mnemonic-key>accFamilyName</mnemonic-key>
+      <max-length>50</max-length>
+    </property>
+    <property id="givenName" editor-type="textbox" required="true">
+      <label-key>lblGivenName</label-key>
+      <mnemonic-key>accGivenName</mnemonic-key>
+      <max-length>50</max-length>
+    </property>
+    <property id="email" editor-type="textbox" required="true" nospace="true">
+      <label-key>lblEmail</label-key>
+      <mnemonic-key>accEmail</mnemonic-key>
+      <max-length>60</max-length>
+    </property>
+    <property id="affiliations" editor-type="textarea" required="true">
+      <label-key>lblAffiliations</label-key>
+      <mnemonic-key>accAffiliations</mnemonic-key>
+      <rows>2</rows>
+    </property>
+  </bean>
+
+  <bean id="WordCollection">
+    <property id="name" editor-type="textbox" required="true" nospace="true">
+      <label-key>lblTitle</label-key>
+      <mnemonic-key>accTitle</mnemonic-key>
+      <max-length>50</max-length>
+    </property>
+    <property id="shortName" editor-type="textbox" required="true">
+      <label-key>lblShortTitle</label-key>
+      <mnemonic-key>accShortTitle</mnemonic-key>
+      <max-length>12</max-length>
+    </property>
+    <property id="creatorRole" editor-type="select" required="true">
+      <label-key>lblCreatorRole</label-key>
+      <mnemonic-key>accCreatorRole</mnemonic-key>
+      <default-value>1</default-value>
+      <option>
+        <name>cmbCreatorRole1</name>
+        <value></value>
+      </option>
+      <option>
+        <name>cmbCreatorRole2</name>
+        <value>annotator</value>
+      </option>
+      <option>
+        <name>cmbCreatorRole3</name>
+        <value>author</value>
+      </option>
+      <option>
+        <name>cmbCreatorRole4</name>
+        <value>compiler</value>
+      </option>
+      <option>
+        <name>cmbCreatorRole5</name>
+        <value>editor</value>
+      </option>
+      <option>
+        <name>cmbCreatorRole6</name>
+        <value>researcher</value>
+      </option>
+      <option>
+        <name>cmbCreatorRole7</name>
+        <value>transcriber</value>
+      </option>
+    </property>
+    <property id="contributor" editor-type="textarea">
+      <label-key>lblContributor</label-key>
+      <mnemonic-key>accContributor</mnemonic-key>
+      <rows>2</rows>
+    </property>
+    <property id="gloss" editor-type="textbox" required="true">
+      <label-key>lblGlossLanguage</label-key>
+      <mnemonic-key>accGlossLanguage</mnemonic-key>
+      <max-length>50</max-length>
+    </property>
+    <property id="glossCode" editor-type="textbox" required="true">
+      <label-key>lblGlossCode</label-key>
+      <mnemonic-key>accGlossCode</mnemonic-key>
+      <max-length>3</max-length>
+    </property>
+    <property id="gloss2" editor-type="textbox">
+      <label-key>lblGlossLanguage2</label-key>
+      <mnemonic-key>accGlossLanguage2</mnemonic-key>
+      <max-length>50</max-length>
+    </property>
+    <property id="glossCode2" editor-type="textbox">
+      <label-key>lblGlossCode2</label-key>
+      <mnemonic-key>accGlossCode2</mnemonic-key>
+      <max-length>3</max-length>
+    </property>
+    <property id="keywords" editor-type="textarea">
+      <label-key>lblKeywords</label-key>
+      <mnemonic-key>accKeywords</mnemonic-key>
+      <rows>1</rows>
+    </property>
+    <property id="description" editor-type="textarea" required="true">
+      <label-key>lblDescription</label-key>
+      <mnemonic-key>accDescription</mnemonic-key>
+      <rows>4</rows>
+    </property>
+    <property id="remarks" editor-type="textarea">
+      <label-key>lblRemarks</label-key>
+      <mnemonic-key>accRemarks</mnemonic-key>
+      <rows>4</rows>
+    </property>
+    <property id="publishedSource" editor-type="textarea">
+      <label-key>lblPublishedSource</label-key>
+      <mnemonic-key>accPublishedSource</mnemonic-key>
+      <rows>3</rows>
+    </property>
+    <property id="coverage" editor-type="textarea">
+      <label-key>lblCoverage</label-key>
+      <mnemonic-key>accCoverage</mnemonic-key>
+      <rows>2</rows>
+    </property>
+    <property id="stableLocation" editor-type="textbox">
+      <label-key>lblStableLocation</label-key>
+      <mnemonic-key>accStableLocation</mnemonic-key>
+      <max-length>100</max-length>
+    </property>
+    <property id="rightsManagement" editor-type="select">
+      <label-key>lblRightsManagement</label-key>
+      <mnemonic-key>accRightsManagement</mnemonic-key>
+      <default-value>1</default-value>
+      <option>
+        <name>cmbRightsManagement1</name>
+        <value></value>
+      </option>
+      <option>
+        <name>cmbRightsManagement2</name>
+        <value>Open Publishing</value>
+      </option>
+      <option>
+        <name>cmbRightsManagement3</name>
+        <value>Common Content</value>
+      </option>
+      <option>
+        <name>cmbRightsManagement4</name>
+        <value>GNU Documentation</value>
+      </option>
+    </property>
+    <property id="rightsCopyright" data-type="integer" editor-type="textbox">
+      <label-key>lblRightsCopyright</label-key>
+      <mnemonic-key>accRightsCopyright</mnemonic-key>
+      <max-length>4</max-length>
+    </property>
+    <property id="creator" editor-type="label">
+      <label-key>lblCreator</label-key>
+    </property>
+    <property id="publisher" editor-type="label">
+      <label-key>lblPublisher</label-key>
+    </property>
+  </bean>
+
+  <bean id="Variety">
+    <property id="ethnologueCode" editor-type="textbox">
+      <label-key>lblEthnologueCode</label-key>
+      <mnemonic-key>accEthnologueCode</mnemonic-key>
+      <max-length>3</max-length>
+    </property>
+     <property id="name" editor-type="textbox" required="true" nospace="true">
+      <label-key>lblName</label-key>
+      <mnemonic-key>accName</mnemonic-key>
+      <max-length>100</max-length>
+    </property>
+    <property id="shortName" editor-type="textbox" required="true" nospace="true">
+      <label-key>lblShortName</label-key>
+      <mnemonic-key>accShortName</mnemonic-key>
+      <max-length>8</max-length>
+    </property>
+    <property id="abbreviation" editor-type="textbox">
+      <label-key>lblAbbreviation</label-key>
+      <mnemonic-key>accAbbreviation</mnemonic-key>
+      <max-length>3</max-length>
+    </property>
+    <property id="classification" editor-type="textarea">
+      <label-key>lblClassification</label-key>
+      <mnemonic-key>accClassification</mnemonic-key>
+      <rows>2</rows>
+    </property>
+    <property id="quality" editor-type="select">
+      <label-key>lblQuality</label-key>
+      <mnemonic-key>accQuality</mnemonic-key>
+      <default-value>1</default-value>
+      <option>
+        <name>cmbQuality1</name>
+        <value></value>
+      </option>
+      <option>
+        <name>cmbQuality2</name>
+        <value>A</value>
+      </option>
+      <option>
+        <name>cmbQuality3</name>
+        <value>B</value>
+      </option>
+      <option>
+        <name>cmbQuality4</name>
+        <value>C</value>
+      </option>
+      <option>
+        <name>cmbQuality5</name>
+        <value>D</value>
+      </option>
+      <option>
+        <name>cmbQuality6</name>
+        <value>E</value>
+      </option>
+      <option>
+        <name>cmbQuality7</name>
+        <value>F</value>
+      </option>
+    </property>
+    <property id="alternateName" editor-type="textarea">
+      <label-key>lblAlternateName</label-key>
+      <mnemonic-key>accAlternateName</mnemonic-key>
+      <rows>3</rows>
+    </property>
+    <property id="locale" editor-type="textarea">
+      <label-key>lblLocale</label-key>
+      <mnemonic-key>accLocale</mnemonic-key>
+      <rows>2</rows>
+    </property>
+    <property id="country" editor-type="textbox">
+      <label-key>lblCountry</label-key>
+      <mnemonic-key>accCountry</mnemonic-key>
+      <max-length>50</max-length>
+    </property>
+    <property id="unpublishedSource" editor-type="textbox">
+      <label-key>lblUnpublishedSource</label-key>
+      <mnemonic-key>accUnpublishedSource</mnemonic-key>
+      <max-length>200</max-length>
+    </property>
+    <property id="source" editor-type="textarea">
+      <label-key>lblSource</label-key>
+      <mnemonic-key>accSource</mnemonic-key>
+      <rows>3</rows>
+    </property>
+    <property id="remarks" editor-type="textarea">
+      <label-key>lblRemarks</label-key>
+      <mnemonic-key>accRemarks</mnemonic-key>
+      <rows>3</rows>
+    </property>
+    <property id="message" editor-type="label">
+      <label-key>lblArrowLeft</label-key>
+      <content>msgVarietyOrderWithViews</content>
+    </property>
+  </bean>
+
+  <bean id="VarietyAdd">
+    <property id="ethnologueCode" editor-type="textbox">
+      <label-key>lblEthnologueCode</label-key>
+      <mnemonic-key>accEthnologueCode</mnemonic-key>
+      <max-length>3</max-length>
+    </property>
+     <property id="name" editor-type="textbox" required="true" nospace="true">
+      <label-key>lblName</label-key>
+      <mnemonic-key>accName</mnemonic-key>
+      <max-length>100</max-length>
+    </property>
+    <property id="shortName" editor-type="textbox" required="true" nospace="true">
+      <label-key>lblShortName</label-key>
+      <mnemonic-key>accShortName</mnemonic-key>
+      <max-length>8</max-length>
+    </property>
+    <property id="abbreviation" editor-type="textbox">
+      <label-key>lblAbbreviation</label-key>
+      <mnemonic-key>accAbbreviation</mnemonic-key>
+      <max-length>3</max-length>
+    </property>
+    <property id="classification" editor-type="textarea">
+      <label-key>lblClassification</label-key>
+      <mnemonic-key>accClassification</mnemonic-key>
+      <rows>2</rows>
+    </property>
+    <property id="quality" editor-type="select">
+      <label-key>lblQuality</label-key>
+      <mnemonic-key>accQuality</mnemonic-key>
+      <default-value>1</default-value>
+      <option>
+        <name>cmbQuality1</name>
+        <value></value>
+      </option>
+      <option>
+        <name>cmbQuality2</name>
+        <value>A</value>
+      </option>
+      <option>
+        <name>cmbQuality3</name>
+        <value>B</value>
+      </option>
+      <option>
+        <name>cmbQuality4</name>
+        <value>C</value>
+      </option>
+      <option>
+        <name>cmbQuality5</name>
+        <value>D</value>
+      </option>
+      <option>
+        <name>cmbQuality6</name>
+        <value>E</value>
+      </option>
+      <option>
+        <name>cmbQuality7</name>
+        <value>F</value>
+      </option>
+    </property>
+    <property id="alternateName" editor-type="textarea">
+      <label-key>lblAlternateName</label-key>
+      <mnemonic-key>accAlternateName</mnemonic-key>
+      <rows>3</rows>
+    </property>
+    <property id="locale" editor-type="textbox">
+      <label-key>lblLocale</label-key>
+      <mnemonic-key>accLocale</mnemonic-key>
+      <max-length>100</max-length>
+    </property>
+    <property id="country" editor-type="textbox">
+      <label-key>lblCountry</label-key>
+      <mnemonic-key>accCountry</mnemonic-key>
+      <max-length>50</max-length>
+    </property>
+    <property id="unpublishedSource" editor-type="textbox">
+      <label-key>lblUnpublishedSource</label-key>
+      <mnemonic-key>accUnpublishedSource</mnemonic-key>
+      <max-length>200</max-length>
+    </property>
+    <property id="source" editor-type="textarea">
+      <label-key>lblSource</label-key>
+      <mnemonic-key>accSource</mnemonic-key>
+      <rows>3</rows>
+    </property>
+    <property id="remarks" editor-type="textarea">
+      <label-key>lblRemarks</label-key>
+      <mnemonic-key>accRemarks</mnemonic-key>
+      <rows>3</rows>
+    </property>
+  </bean>
+
+  <bean id="View">
+    <property id="name" editor-type="custom" required="true" nospace="true">
+      <label-key>lblName</label-key>
+      <mnemonic-key>accName</mnemonic-key>
+      <max-length>30</max-length>
+      <editor-class>org.wordcorr.gui.input.AliasTextRow</editor-class>
+    </property>
+    <property id="threshold" data-type="integer" editor-type="textbox" required="true">
+      <label-key>lblThreshold</label-key>
+      <mnemonic-key>accThreshold</mnemonic-key>
+      <default-value>50</default-value>
+      <max-length>3</max-length>
+      <min-value>0</min-value>
+      <max-value>100</max-value>
+    </property>
+    <property id="remarks" editor-type="textarea">
+      <label-key>lblRemarks</label-key>
+      <mnemonic-key>accRemarks</mnemonic-key>
+      <rows>1</rows>
+    </property>
+    <property id="members" editor-type="custom">
+      <label-key>lblMembers</label-key>
+      <mnemonic-key>accMembers</mnemonic-key>
+      <editor-class>org.wordcorr.gui.input.ViewMemberRow</editor-class>
+    </property>
+    <property id="graphemeClusters" editor-type="custom">
+      <label-key>lblGraphemeClusters</label-key>
+      <editor-class>org.wordcorr.gui.ViewsPane$GraphemeClustersRow</editor-class>
+    </property>
+    <property id="groupsTabulated" editor-type="label">
+      <label-key>lblGroupsTabulated</label-key>
+    </property>
+  </bean>
+
+  <bean id="Entry">
+    <property id="entryNum" editor-type="label">
+      <label-key>lblEntry</label-key>
+    </property>
+    <property id="name" editor-type="textbox" required="true" nospace="true">
+      <label-key>lblGloss</label-key>
+      <mnemonic-key>accGloss</mnemonic-key>
+      <max-length>50</max-length>
+      <font-key>PrimaryGloss</font-key>
+    </property>
+    <property id="gloss2" editor-type="textbox">
+      <label-key>lblGloss2</label-key>
+      <mnemonic-key>accGloss2</mnemonic-key>
+      <max-length>50</max-length>
+      <font-key>SecondaryGloss</font-key>
+    </property>
+    <property id="data" editor-type="custom">
+      <label-key>lblData</label-key>
+      <mnemonic-key>accData</mnemonic-key>
+      <editor-class>org.wordcorr.gui.input.EntryDataRow</editor-class>
+    </property>
+  </bean>
+
+  <bean id="Datum">
+    <property id="entryNum" editor-type="label">
+      <label-key>lblEntry</label-key>
+    </property>
+    <property id="entryGloss" editor-type="label">
+      <label-key>lblGloss</label-key>
+      <font-key>PrimaryGloss</font-key>
+    </property>
+    <property id="variety" editor-type="custom" required="true" nospace="true">
+      <label-key>lblVariety</label-key>
+      <mnemonic-key>accVariety</mnemonic-key>
+      <editor-class>org.wordcorr.gui.input.DatumVarietyRow</editor-class>
+    </property>
+    <property id="name" editor-type="textbox" required="true" nospace="true">
+      <label-key>lblDatum</label-key>
+      <mnemonic-key>accDatum</mnemonic-key>
+      <max-length>70</max-length>
+      <font-key>IPA</font-key>
+    </property>
+    <property id="specialSemantics" editor-type="textarea">
+      <label-key>lblSpecialSemantics</label-key>
+      <mnemonic-key>accSpecialSemantics</mnemonic-key>
+      <rows>5</rows>
+    </property>
+    <property id="remarks" editor-type="textarea">
+      <label-key>lblRemarks</label-key>
+      <mnemonic-key>accRemarks</mnemonic-key>
+      <rows>5</rows>
+    </property>
+    <property id="message" editor-type="label">
+      <label-key>lblBlank</label-key>
+      <content>msgEditShortcutKeys</content>
+    </property>
+</bean>
+
+  <bean id="Alignment">
+    <property id="group" editor-type="custom" required="true">
+      <label-key>lblGroup</label-key>
+      <mnemonic-key>accGroup</mnemonic-key>
+      <max-length>4</max-length>
+      <editor-class>org.wordcorr.gui.input.AlignmentGroupRow</editor-class>
+    </property>
+    <property id="vector" editor-type="custom" required="true">
+      <label-key>lblVector</label-key>
+      <mnemonic-key>accVector</mnemonic-key>
+      <editor-class>org.wordcorr.gui.input.AlignmentVectorRow</editor-class>
+    </property>
+    <property id="metathesis1" data-type="integer" editor-type="textbox">
+      <label-key>lblMetathesis1</label-key>
+      <mnemonic-key>accMetathesis1</mnemonic-key>
+    </property>
+    <property id="length1" data-type="integer" editor-type="textbox">
+      <label-key>lblLength1</label-key>
+      <mnemonic-key>accLength1</mnemonic-key>
+    </property>
+    <property id="metathesis2" data-type="integer" editor-type="textbox">
+      <label-key>lblMetathesis2</label-key>
+      <mnemonic-key>accMetathesis2</mnemonic-key>
+    </property>
+    <property id="length2" data-type="integer" editor-type="textbox">
+      <label-key>lblLength2</label-key>
+      <mnemonic-key>accLength2</mnemonic-key>
+    </property>
+    <property id="observations" editor-type="textarea">
+      <label-key>lblObservations</label-key>
+      <mnemonic-key>accObservations</mnemonic-key>
+      <rows>7</rows>
+    </property>
+  </bean>
+
+  <bean id="Protosegment">
+    <property id="protosegment" data-type="text" editor-type="textbox" required="true">
+      <label-key>lblProtosegment</label-key>
+      <mnemonic-key>accProtosegment</mnemonic-key>
+      <max-length>5</max-length>
+      <font-key>IPA</font-key>
+    </property>
+    <property id="zone" editor-type="custom" required="true">
+      <label-key>lblZone</label-key>
+      <editor-class>org.wordcorr.gui.input.ProtosegmentZoneRow</editor-class>
+    </property>
+    <property id="remarks" editor-type="textarea">
+      <label-key>lblRemarks</label-key>
+      <mnemonic-key>accRemarks</mnemonic-key>
+      <rows>7</rows>
+    </property>
+  </bean>
+
+  <bean id="CorrespondenceSet">
+    <property id="remarks" editor-type="textarea">
+      <label-key>lblCorrespondenceSetRemarks</label-key>
+      <mnemonic-key>accCorrespondenceSetRemarks</mnemonic-key>
+      <rows>10</rows>
+    </property>
+  </bean>
+
+  <bean id="WordsurvFile">
+    <property id="DBFilename" editor-type="custom" required="true" nospace="true">
+      <label-key>lblDBFile</label-key>
+      <mnemonic-key>accName</mnemonic-key>
+      <max-length>150</max-length>
+      <editor-class>org.wordcorr.gui.input.InputFile</editor-class>
+    </property>
+    <property id="catFilename" editor-type="custom" required="true" nospace="true">
+      <label-key>lblCatFile</label-key>
+      <mnemonic-key>accData</mnemonic-key>
+      <max-length>150</max-length>
+      <editor-class>org.wordcorr.gui.input.InputFile</editor-class>
+    </property>
+    <property id="name" editor-type="textbox" required="true" nospace="true">
+      <label-key>lblName</label-key>
+      <mnemonic-key>accName</mnemonic-key>
+      <max-length>50</max-length>
+    </property>
+    <property id="shortName" editor-type="textbox" required="true">
+      <label-key>lblShortName</label-key>
+      <mnemonic-key>accShortName</mnemonic-key>
+      <max-length>10</max-length>
+    </property>
+    <property id="gloss" editor-type="textbox" required="true" nospace="true">
+      <label-key>lblGlossLanguage</label-key>
+      <mnemonic-key>accGlossLanguage</mnemonic-key>
+      <max-length>50</max-length>
+    </property>
+    <property id="gloss2" editor-type="textbox" nospace="true">
+      <label-key>lblGlossLanguage2</label-key>
+      <mnemonic-key>accGlossLanguage2</mnemonic-key>
+      <max-length>50</max-length>
+    </property>
+  </bean>
+
+  <bean id="FindDialog$FindProperties">
+    <property id="findWhat" editor-type="textbox">
+      <label-key>lblFindWhat</label-key>
+      <mnemonic-key>accFindWhat</mnemonic-key>
+    </property>
+    <property id="match" editor-type="select">
+      <label-key>lblMatch</label-key>
+      <mnemonic-key>accMatch</mnemonic-key>
+      <option>
+        <name>cmbAnyPartOfName</name>
+        <value>any</value>
+      </option>
+      <option>
+        <name>cmbWholeName</name>
+        <value>whole</value>
+      </option>
+      <option>
+        <name>cmbStartOfName</name>
+        <value>start</value>
+      </option>
+    </property>
+  </bean>
+
+  <bean id="GlossFindDialog">
+    <property id="findWhat" editor-type="textbox">
+      <label-key>lblFindWhat</label-key>
+      <mnemonic-key>accFindWhat</mnemonic-key>
+      <font-key>PrimaryGloss</font-key>
+    </property>
+    <property id="match" editor-type="select">
+      <label-key>lblMatch</label-key>
+      <mnemonic-key>accMatch</mnemonic-key>
+      <option>
+        <name>cmbAnyPartOfName</name>
+        <value>any</value>
+      </option>
+      <option>
+        <name>cmbWholeName</name>
+        <value>whole</value>
+      </option>
+      <option>
+        <name>cmbStartOfName</name>
+        <value>start</value>
+      </option>
+    </property>
+  </bean>
+
+  <bean id="AnnotatePane$EntryWrapper">
+    <property id="entry" editor-type="label">
+      <label-key>lblEntry</label-key>
+    </property>
+    <property id="gloss" editor-type="label">
+      <label-key>lblGloss</label-key>
+      <font-key>PrimaryGloss</font-key>
+    </property>
+    <property id="gloss2" editor-type="label">
+      <label-key>lblGloss2</label-key>
+      <font-key>SecondaryGloss</font-key>
+    </property>
+    <property id="data" editor-type="custom">
+      <label-key>lblData</label-key>
+      <mnemonic-key>accData</mnemonic-key>
+      <editor-class>org.wordcorr.gui.AnnotatePane$AlignmentRow</editor-class>
+    </property>
+  </bean>
+
+  <bean id="TabulatePane$EntryWrapper">
+    <property id="entry" editor-type="label">
+      <label-key>lblEntry</label-key>
+    </property>
+    <property id="gloss" editor-type="label">
+      <label-key>lblGloss</label-key>
+      <font-key>PrimaryGloss</font-key>
+    </property>
+    <property id="gloss2" editor-type="label">
+      <label-key>lblGloss2</label-key>
+      <font-key>SecondaryGloss</font-key>
+    </property>
+    <property id="data" editor-type="custom">
+      <label-key>lblAlignment</label-key>
+      <editor-class>org.wordcorr.gui.TabulatePane$AlignmentRow</editor-class>
+    </property>
+    <property id="tabulate" editor-type="custom" required="true">
+      <label-key>lblTabulate</label-key>
+      <required-message-key>cmpTabulateRequired</required-message-key>
+      <editor-class>org.wordcorr.gui.TabulatePane$TabulateRow</editor-class>
+    </property>
+  </bean>
+
+  <bean id="TabulateSelectAlignment">
+    <property id="message" editor-type="label">
+      <label-key>lblNote</label-key>
+    </property>
+    <property id="value" editor-type="custom" required="true">
+      <label-key>lblTabulateSelectAlignmentRow</label-key>
+      <editor-class>org.wordcorr.gui.TabulatePane$TabulateSelectAlignmentRow</editor-class>
+    </property>
+  </bean>
+
+  <bean id="ViewsPane$ViewDuplicator">
+    <property id="name" editor-type="textbox" required="true" nospace="true">
+      <label-key>lblName</label-key>
+      <mnemonic-key>accName</mnemonic-key>
+      <max-length>100</max-length>
+    </property>
+    <property id="type" editor-type="select" required="true">
+      <label-key>lblViewCopyType</label-key>
+      <mnemonic-key>accViewCopyType</mnemonic-key>
+      <default-value>1</default-value>
+      <option>
+        <name>cmbViewCopy1</name>
+        <value>0</value>
+      </option>
+      <option>
+        <name>cmbViewCopy2</name>
+        <value>1</value>
+      </option>
+    </property>
+  </bean>
+
+  <bean id="RefineChangeEnvironment">
+    <property id="value" editor-type="textbox" required="true" nospace="true">
+      <label-key>lblRefineChangeEnvironmentRow</label-key>
+      <mnemonic-key>accValue</mnemonic-key>
+      <font-key>IPA</font-key>
+    </property>
+    <property id="zone" editor-type="label">
+      <label-key>lblRefineZone</label-key>
+    </property>
+    <property id="protosegment" editor-type="label">
+      <label-key>lblRefineProtosegment</label-key>
+      <font-key>IPA</font-key>
+    </property>
+    <property id="environment" editor-type="label">
+      <label-key>lblRefineEnvironment</label-key>
+      <font-key>IPA</font-key>
+    </property>
+    <property id="clusterOrder" editor-type="label">
+      <label-key>lblRefineClusterOrder</label-key>
+    </property>
+    <property id="correspondenceSet" editor-type="label">
+      <label-key>lblRefineCorrespondenceSet</label-key>
+      <font-key>IPA</font-key>
+    </property>
+    <property id="citationCount" editor-type="label">
+      <label-key>lblRefineCitationCount</label-key>
+    </property>
+    <property id="citation" editor-type="label">
+      <label-key>lblRefineCitation</label-key>
+    </property>
+  </bean>
+  
+  <bean id="RefineChangeProtosegment">
+    <property id="value" editor-type="textbox" required="true" nospace="true">
+      <label-key>lblRefineChangeProtosegmentRow</label-key>
+      <mnemonic-key>accProtosegment</mnemonic-key>
+      <max-length>5</max-length>
+      <font-key>IPA</font-key>
+    </property>
+    <property id="zone" editor-type="label">
+      <label-key>lblRefineZone</label-key>
+    </property>
+    <property id="protosegment" editor-type="label">
+      <label-key>lblRefineProtosegment</label-key>
+      <font-key>IPA</font-key>
+    </property>
+  </bean>
+  
+  <bean id="RefineDeleteProtosegment">
+    <property id="value" editor-type="custom" required="true">
+      <label-key>lblRefineDeleteProtosegmentRow</label-key>
+      <editor-class>org.wordcorr.gui.RefinePane$RefineDeleteProtosegmentRow</editor-class>
+    </property>
+  </bean>
+  
+  <bean id="RefineEditRemarks">
+    <property id="remarks" editor-type="custom" required="true">
+      <label-key>lblRemarksType</label-key>
+      <required-message-key>cmpTabulateRequired</required-message-key>
+      <editor-class>org.wordcorr.gui.RefinePane$RefineEditRemarksRow</editor-class>
+    </property>
+    <property id="value" editor-type="textarea">
+      <label-key>lblRemarks</label-key>
+      <mnemonic-key>accRemarks</mnemonic-key>
+      <rows>10</rows>
+    </property>
+  </bean>
+
+  <bean id="RefineMergeClusters">
+    <property id="value" editor-type="custom" required="true">
+      <label-key>lblRefineMergeClustersRow</label-key>
+      <editor-class>org.wordcorr.gui.RefinePane$RefineMergeClustersRow</editor-class>
+    </property>
+    <property id="zone" editor-type="label">
+      <label-key>lblRefineZone</label-key>
+    </property>
+    <property id="protosegment" editor-type="label">
+      <label-key>lblRefineProtosegment</label-key>
+      <font-key>IPA</font-key>
+    </property>
+    <property id="environment" editor-type="label">
+      <label-key>lblRefineEnvironment</label-key>
+      <font-key>IPA</font-key>
+    </property>
+    <property id="clusterOrder" editor-type="label">
+      <label-key>lblRefineClusterOrder</label-key>
+    </property>
+  </bean>
+  
+  <bean id="RefineMergeProtosegments">
+    <property id="message" editor-type="label">
+      <label-key>lblNote</label-key>
+      <content>msgRefineMergeProtosegments</content>
+    </property>
+    <property id="value" editor-type="custom" required="true">
+      <label-key>lblRefineMergeProtosegmentsRow</label-key>
+      <editor-class>org.wordcorr.gui.RefinePane$RefineMergeProtosegmentsRow</editor-class>
+    </property>
+    <property id="zone" editor-type="label">
+      <label-key>lblRefineZone</label-key>
+    </property>
+    <property id="protosegment" editor-type="label">
+      <label-key>lblRefineProtosegment</label-key>
+      <font-key>IPA</font-key>
+    </property>
+  </bean>
+  
+  <bean id="RefineMoveCluster">
+    <property id="message" editor-type="label">
+      <label-key>lblNote</label-key>
+      <content>msgRefineMoveCluster</content>
+    </property>
+    <property id="value" editor-type="custom" required="true">
+      <label-key>lblRefineMoveClusterRow</label-key>
+      <editor-class>org.wordcorr.gui.RefinePane$RefineMoveClusterRow</editor-class>
+    </property>
+    <property id="zone" editor-type="label">
+      <label-key>lblRefineZone</label-key>
+    </property>
+    <property id="protosegment" editor-type="label">
+      <label-key>lblRefineProtosegment</label-key>
+      <font-key>IPA</font-key>
+    </property>
+    <property id="environment" editor-type="label">
+      <label-key>lblRefineEnvironment</label-key>
+      <font-key>IPA</font-key>
+    </property>
+    <property id="clusterOrder" editor-type="label">
+      <label-key>lblRefineClusterOrder</label-key>
+    </property>
+  </bean>
+  
+  <bean id="RefineMoveCorrespondenceSet">
+    <property id="value" editor-type="custom" required="true">
+      <label-key>lblRefineMoveCorrespondenceSetRow</label-key>
+      <editor-class>org.wordcorr.gui.RefinePane$RefineMoveCorrespondenceSetRow</editor-class>
+    </property>
+    <property id="value2" editor-type="textbox" required="true" nospace="true">
+      <label-key>lblRefineEnvironment</label-key>
+      <mnemonic-key>accValue</mnemonic-key>
+      <font-key>IPA</font-key>
+    </property>
+    <property id="zone" editor-type="label">
+      <label-key>lblRefineZone</label-key>
+    </property>
+    <property id="protosegment" editor-type="label">
+      <label-key>lblRefineProtosegment</label-key>
+      <font-key>IPA</font-key>
+    </property>
+    <property id="environment" editor-type="label">
+      <label-key>lblRefineEnvironment</label-key>
+      <font-key>IPA</font-key>
+    </property>
+    <property id="clusterOrder" editor-type="label">
+      <label-key>lblRefineClusterOrder</label-key>
+    </property>
+    <property id="correspondenceSet" editor-type="label">
+      <label-key>lblRefineCorrespondenceSet</label-key>
+      <font-key>IPA</font-key>
+    </property>
+  </bean>
+
+  <bean id="RefineMoveCorrespondenceSetToCluster">
+    <property id="message" editor-type="label">
+      <label-key>lblBlank</label-key>
+      <content>msgRefineMoveCorrespondenceSetToCluster</content>
+    </property>
+    <property id="value" editor-type="custom" required="true">
+      <label-key>lblRefineMoveCorrespondenceSetToClusterRow</label-key>
+      <editor-class>org.wordcorr.gui.RefinePane$RefineMoveCorrespondenceSetToClusterRow</editor-class>
+    </property>
+    <property id="zone" editor-type="label">
+      <label-key>lblRefineZone</label-key>
+    </property>
+    <property id="protosegment" editor-type="label">
+      <label-key>lblRefineProtosegment</label-key>
+    </property>
+    <property id="environment" editor-type="label">
+      <label-key>lblRefineEnvironment</label-key>
+    </property>
+    <property id="clusterOrder" editor-type="label">
+      <label-key>lblRefineClusterOrder</label-key>
+    </property>
+    <property id="correspondenceSet" editor-type="label">
+      <label-key>lblRefineCorrespondenceSet</label-key>
+    </property>
+  </bean>
+
+  <bean id="RefineMoveProtosegment">
+    <property id="value" editor-type="custom" required="true">
+      <label-key>lblRefineMoveProtosegmentRow</label-key>
+      <editor-class>org.wordcorr.gui.RefinePane$RefineMoveProtosegmentRow</editor-class>
+    </property>
+    <property id="zone" editor-type="label">
+      <label-key>lblRefineZone</label-key>
+    </property>
+    <property id="protosegment" editor-type="label">
+      <label-key>lblRefineProtosegment</label-key>
+      <font-key>IPA</font-key>
+    </property>
+  </bean>
+
+  <bean id="RefineReorderClusters">
+    <property id="value" editor-type="custom">
+      <label-key>lblRefineReorderClustersRow</label-key>
+      <editor-class>org.wordcorr.gui.RefinePane$RefineReorderClustersRow</editor-class>
+    </property>
+    <property id="zone" editor-type="label">
+      <label-key>lblRefineZone</label-key>
+    </property>
+    <property id="protosegment" editor-type="label">
+      <label-key>lblRefineProtosegment</label-key>
+      <font-key>IPA</font-key>
+    </property>
+    <property id="environment" editor-type="label">
+      <label-key>lblRefineEnvironment</label-key>
+      <font-key>IPA</font-key>
+    </property>
+    <property id="clusterOrder" editor-type="label">
+      <label-key>lblRefineClusterOrder</label-key>
+    </property>
+  </bean>
+
+  <bean id="RefineRetabulateGroup">
+    <property id="value" editor-type="custom" required="true">
+      <label-key>lblRefineRetabulateGroupRow</label-key>
+      <editor-class>org.wordcorr.gui.RefinePane$RefineRetabulateGroupRow</editor-class>
+    </property>
+    <property id="zone" editor-type="label">
+      <label-key>lblRefineZone</label-key>
+    </property>
+    <property id="protosegment" editor-type="label">
+      <label-key>lblRefineProtosegment</label-key>
+      <font-key>IPA</font-key>
+    </property>
+    <property id="environment" editor-type="label">
+      <label-key>lblRefineEnvironment</label-key>
+      <font-key>IPA</font-key>
+    </property>
+    <property id="clusterOrder" editor-type="label">
+      <label-key>lblRefineClusterOrder</label-key>
+    </property>
+    <property id="correspondenceSet" editor-type="label">
+      <label-key>lblRefineCorrespondenceSet</label-key>
+      <font-key>IPA</font-key>
+    </property>
+  </bean>
+
+  <bean id="RefineSummarize">
+    <property id="minFrantz" data-type="float" editor-type="textbox" required="true">
+      <label-key>lblRefineSummarizeMinFrantz</label-key>
+      <mnemonic-key>accRefineSummarizeMinFrantz</mnemonic-key>
+      <default-value>0.0</default-value>
+      <min-value>-1.0</min-value>
+      <max-value>1.0</max-value>
+    </property>
+    <property id="maxReconstructions" data-type="integer" editor-type="textbox" required="true">
+      <label-key>lblRefineSummarizeMaxReconstructions</label-key>
+      <mnemonic-key>accRefineSummarizeMaxReconstructions</mnemonic-key>
+      <default-value>20</default-value>
+      <max-length>4</max-length>
+      <min-value>1</min-value>
+      <max-value>1000</max-value>
+    </property>
+    <property id="displayFrantz" editor-type="custom" required="true">
+      <label-key>lblRefineSummarizeDisplayFrantz</label-key>
+      <mnemonic-key>accRefineSummarizeDisplayFrantz</mnemonic-key>
+      <editor-class>org.wordcorr.gui.RefinePane$RefineSummarizeDisplayFrantzRow</editor-class>
+    </property>
+    <property id="includeResidue" editor-type="custom" required="true">
+      <label-key>lblRefineSummarizeIncludeResidue</label-key>
+      <mnemonic-key>accRefineSummarizeIncludeResidue</mnemonic-key>
+      <editor-class>org.wordcorr.gui.RefinePane$RefineSummarizeIncludeResidueRow</editor-class>
+    </property>
+    <property id="gloss" editor-type="custom" required="true">
+      <label-key>lblRefineSummarizeGloss</label-key>
+      <mnemonic-key>accRefineSummarizeGloss</mnemonic-key>
+      <editor-class>org.wordcorr.gui.RefinePane$RefineSummarizeGlossRow</editor-class>
+    </property>
+    
+    <property id="format" editor-type="custom" required="true">
+      <label-key>lblRefineSummarizeFormat</label-key>
+      <mnemonic-key>accRefineSummarizeFormat</mnemonic-key>
+      <editor-class>org.wordcorr.gui.RefinePane$RefineSummarizeFormatRow</editor-class>
+    </property>
+    
+    <property id="filename" editor-type="custom" required="true" nospace="true">
+      <label-key>lblRefineSummarizeFilename</label-key>
+      <mnemonic-key>accRefineSummarizeFilename</mnemonic-key>
+      <max-length>150</max-length>
+      <editor-class>org.wordcorr.gui.input.InputFile</editor-class>
+    </property>
+  </bean>
+
+  <bean id="ViewsUndefineGraphemeCluster">
+    <property id="warning" editor-type="label">
+      <label-key>lblWarning</label-key>
+      <content>msgViewsUndefineGraphemeClusterWarning</content>
+    </property>
+    <property id="value" editor-type="custom" required="true">
+      <label-key>lblViewsUndefineGraphemeClusterRow</label-key>
+      <editor-class>org.wordcorr.gui.ViewsPane$ViewsUndefineGraphemeClusterRow</editor-class>
+    </property>
+  </bean>
+</beans>

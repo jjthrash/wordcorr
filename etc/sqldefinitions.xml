@@ -1,0 +1,33 @@
+<?xml version="1.0" ?>
+
+<!DOCTYPE definitions [
+<!ELEMENT definitions (table*)>
+<!ELEMENT table (action*)>
+<!ELEMENT action (param*)>
+<!ATTLIST table id ID #REQUIRED>
+<!ATTLIST action id ID #REQUIRED>
+<!ATTLIST parameter
+          id ID #REQUIRED
+          order (integer) #REQUIRED
+          type (long | string | timestamp) #REQUIRED>
+]>
+
+<definitions>
+  <table id="Variety">
+    <action id="AddNew">
+      <parameter id="name" order="1" type="string"/>
+      <parameter id="shortName" order="2" type="string"/>
+      <parameter id="ethnologueCode" order="3" type="string"/>
+      <parameter id="quality" order="4" type="string"/>
+      <parameter id="locale" order="5" type="string"/>
+      <parameter id="source" order="6" type="string"/>
+      <parameter id="abbreviation" order="7" type="string"/>
+      <parameter id="collectionKey" order="8" type="long"/>
+    </action>
+    <action id="AddNew.Results">
+      <parameter id="remoteID" order="1" type="long"/>
+      <parameter id="timestamp" order="2" type="timestamp"/>
+      <parameter id="id" order="3" type="long"/>
+    </action>
+  </table>
+</definitions>
